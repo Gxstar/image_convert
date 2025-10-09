@@ -77,3 +77,62 @@ settings.json
 _site/
 .sass-cache/
 .jekyll-metadata
+
+# Vue.js / Vite specific
+node_modules/
+.nuxt/
+.nitro/
+.cache/
+.parcel-cache/
+
+# Vue/Vite build outputs
+dist/
+dist-ssr/
+*.tgz
+
+# Vite
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# pnpm specific
+.pnpm-store/
+.pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE and editor files (补充)
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+
+# OS specific (补充)
+*.lnk
+
+# Testing
+/coverage/
+.nyc_output/
+
+# Storybook
+storybook-static/
+
+# Cypress
+/cypress/screenshots/
+/cypress/videos/
+
+# ESLint
+.eslintcache
+
+# Stylelint
+.stylelintcache
+
+# Lock files (保留pnpm-lock.yaml)
+# package-lock.json
+# yarn.lock
+
+# Temporary folders
+.temp/
+.tmp/
