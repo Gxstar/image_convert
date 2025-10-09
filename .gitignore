@@ -1,0 +1,79 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+wheels/
+*.egg-info
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# Virtual environments
+.venv
+venv/
+env/
+ENV/
+
+# PyWebView specific
+*.app
+*.dmg
+*.exe
+*.msi
+webview_temp/
+webview_cache/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Configuration files (except template)
+config.json
+settings.json
+
+# Build artifacts
+*.spec
+
+# Package files
+*.tar.gz
+*.whl
+
+# Documentation
+_site/
+.sass-cache/
+.jekyll-metadata
