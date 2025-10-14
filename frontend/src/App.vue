@@ -1,11 +1,24 @@
-<script setup></script>
+<script setup>
+import Sidebar from './component/Sidebar.vue'
+import Imagelist from './component/Imagelist.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="app-container">
+    <el-row>
+      <el-col :span="6">
+        <Sidebar />
+      </el-col>
+      <el-col :span="18">
+        <Imagelist />
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.app-container {
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+</style>
