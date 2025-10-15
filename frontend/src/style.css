@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 确保Element Plus按钮样式不被Tailwind覆盖 */
+.el-button {
+  background-color: var(--el-button-bg-color, var(--el-color-primary)) !important;
+  border-color: var(--el-button-border-color, var(--el-color-primary)) !important;
+  color: var(--el-button-text-color, var(--el-color-white)) !important;
+}
+
+.el-button--primary {
+  background-color: var(--el-color-primary) !important;
+  border-color: var(--el-color-primary) !important;
+  color: var(--el-color-white) !important;
+}
+
+/* 自定义样式，从template.html中提取 */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+    padding: 8px;
+}
+
+.image-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.image-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.image-placeholder {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 96px;
+}
+
+.selected {
+    outline: 3px solid #3b82f6;
+    outline-offset: -3px;
+}
+
+.sidebar-button {
+    transition: all 0.2s ease;
+}
+
+.sidebar-button:hover {
+    background-color: #f3f4f6;
+    transform: translateX(2px);
+}
+
+.drag-over {
+    background-color: #dbeafe;
+    border: 2px dashed #3b82f6;
+}

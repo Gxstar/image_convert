@@ -1,128 +1,97 @@
 <template>
-    <div class="sidebar-container">
-        <!-- 顶部标题 -->
-        <div class="sidebar-header">
-            <h2 class="sidebar-title">图片格式转换器</h2>
-        </div>
-
-        <!-- 输入按钮区域 -->
-        <div class="input-section">
-            <el-button 
-                type="primary" 
-                icon="Picture"
-                class="input-button"
-                @click="selectImages"
-            >
-                选择图片
-            </el-button>
-            <el-button 
-                type="primary" 
-                icon="Folder"
-                class="input-button"
-                @click="selectFolder"
-            >
-                选择文件夹
-            </el-button>
-        </div>
-
-        <!-- 输出区域 -->
-        <div class="output-section">
-            <div class="output-label">输出目录</div>
-            <el-input 
-                v-model="outputPath" 
-                placeholder="请选择输出目录" 
-                readonly
-            >
-                <template #append>
-                    <el-button icon="FolderOpened" @click="selectOutputFolder" />
-                </template>
-            </el-input>
-            <div class="selected-path" v-if="outputPath">
-                已选择: {{ outputPath }}
-            </div>
-        </div>
+  <div class="w-64 bg-white shadow-lg flex flex-col">
+    <!-- 顶部标题 -->
+    <div class="p-6 border-b border-gray-200">
+      <h1 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
+        <el-icon><Picture /></el-icon>
+        图片复制工具
+      </h1>
     </div>
+    
+    <!-- 主要内容区域 -->
+    <div class="flex-1 p-4 space-y-4">
+      <!-- 添加图片和文件夹按钮 -->
+      <div class="space-y-2">
+        <button 
+          @click="emit('add-images')" 
+          class="sidebar-button w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left font-medium text-gray-700 hover:text-primary"
+        >
+          <el-icon class="text-gray-500 hover:text-primary"><PictureFilled /></el-icon>
+          <span>添加图片</span>
+        </button>
+        
+        <button 
+          @click="emit('add-folder')" 
+          class="sidebar-button w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left font-medium text-gray-700 hover:text-primary"
+        >
+          <el-icon class="text-gray-500 hover:text-primary"><FolderAdd /></el-icon>
+          <span>添加文件夹</span>
+        </button>
+      </div>
+      
+      <!-- 操作区域 -->
+      <div class="pt-4 border-t border-gray-200">
+        <h3 class="font-semibold text-gray-700 mb-3">操作</h3>
+        
+        <button 
+          @click="emit('copy-images')" 
+          class="w-full bg-primary hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+        >
+          <el-icon><CopyDocument /></el-icon>
+          复制图片
+        </button>
+        
+        <!-- 目标路径选择 -->
+        <div class="mt-4">
+          <label class="block text-sm font-medium text-gray-700 mb-2">目标路径</label>
+          <div class="flex gap-2">
+            <el-input 
+              v-model="targetPath" 
+              placeholder="选择或输入目标文件夹路径" 
+              class="flex-1"
+            />
+            <el-button 
+              @click="emit('browse-target')" 
+              type="primary"
+              icon="FolderOpened"
+              class="!bg-primary !border-primary hover:!bg-blue-600"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部信息 -->
+    <div class="p-4 border-t border-gray-200 text-xs text-gray-500">
+      <p>支持 JPG, PNG, GIF, WEBP, AVIF, HEIF 格式</p>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { Picture, Folder, FolderOpened } from '@element-plus/icons-vue'
+import { 
+  Picture, 
+  PictureFilled, 
+  FolderAdd, 
+  CopyDocument, 
+  FolderOpened 
+} from '@element-plus/icons-vue'
 
-// 输出路径
-const outputPath = ref('')
+// Emits
+const emit = defineEmits(['add-images', 'add-folder', 'copy-images', 'browse-target'])
 
-// 选择图片方法
-const selectImages = () => {
-    console.log('选择图片')
-    // 这里可以添加实际的选择图片逻辑
-}
-
-// 选择文件夹方法
-const selectFolder = () => {
-    console.log('选择文件夹')
-    // 这里可以添加实际的选择文件夹逻辑
-}
-
-// 选择输出文件夹方法
-const selectOutputFolder = () => {
-    console.log('选择输出文件夹')
-    // 这里可以添加实际的选择输出文件夹逻辑
-    // 示例：设置一个模拟路径
-    outputPath.value = '/example/output/path'
-}
+// 目标路径
+const targetPath = ref('')
 </script>
 
 <style scoped>
-.sidebar-container {
-    height: 100vh;
-    background-color: #f5f7fa;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.sidebar-button {
+  transition: all 0.2s ease;
 }
 
-.sidebar-header {
-    text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #e4e7ed;
-}
-
-.sidebar-title {
-    margin: 0;
-    color: #303133;
-    font-size: 24px;
-    font-weight: 600;
-}
-
-.input-section {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.input-button {
-    height: 40px;
-    font-size: 16px;
-}
-
-.output-section {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.output-label {
-    font-size: 16px;
-    font-weight: 500;
-    color: #606266;
-}
-
-.selected-path {
-    font-size: 14px;
-    color: #909399;
-    margin-top: 5px;
-    word-break: break-all;
+.sidebar-button:hover {
+  background-color: #f3f4f6;
+  transform: translateX(2px);
 }
 </style>

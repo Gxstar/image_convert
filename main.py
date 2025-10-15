@@ -1,7 +1,4 @@
-def main():
-    import webview
-    webview.create_window("Hello World", "template.html")
-    webview.start()
+from backend.app import main
 
 
 if __name__ == "__main__":
