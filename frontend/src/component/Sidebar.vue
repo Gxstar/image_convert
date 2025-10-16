@@ -13,7 +13,7 @@
       <!-- 添加图片和文件夹按钮 -->
       <div class="space-y-2">
         <button 
-          @click="emit('add-images')" 
+          @click="addImage" 
           class="sidebar-button w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left font-medium text-gray-700 hover:text-primary"
         >
           <el-icon class="text-gray-500 hover:text-primary"><PictureFilled /></el-icon>
@@ -78,6 +78,9 @@ import {
   FolderOpened 
 } from '@element-plus/icons-vue'
 
+const addImage=()=>{
+  console.log(window.pywebview.api.choose_files())
+}
 // Emits
 const emit = defineEmits(['add-images', 'add-folder', 'copy-images', 'browse-target'])
 
