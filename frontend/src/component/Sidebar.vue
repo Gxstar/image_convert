@@ -21,7 +21,7 @@
         </button>
         
         <button 
-          @click="emit('add-folder')" 
+          @click="addFolder" 
           class="sidebar-button w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left font-medium text-gray-700 hover:text-primary"
         >
           <el-icon class="text-gray-500 hover:text-primary"><FolderAdd /></el-icon>
@@ -80,6 +80,9 @@ import {
 
 const addImage=()=>{
   console.log(window.pywebview.api.choose_files())
+}
+const addFolder=()=>{
+  console.log(window.pywebview.api.choose_dir())
 }
 // Emits
 const emit = defineEmits(['add-images', 'add-folder', 'copy-images', 'browse-target'])
